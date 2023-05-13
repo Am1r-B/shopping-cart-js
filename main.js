@@ -84,4 +84,12 @@ const decrement = (id) => {
 const update = (id) => {
   const item = basket.find((product) => product.id === id);
   document.getElementById(`quantity-${id}`).innerHTML = item.amount;
+  calculation();
+};
+
+const calculation = () => {
+  const cartIcon = document.getElementById("cart-amount");
+  cartIcon.innerHTML = basket.reduce((sum, product) => {
+    return sum + product.amount;
+  }, 0);
 };
