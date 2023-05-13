@@ -70,13 +70,18 @@ const increment = (id) => {
       amount: 1,
     });
   }
-  console.log(basket);
+  update(id);
 };
 const decrement = (id) => {
   const item = basket.find((product) => product.id === id);
 
   if (item?.amount > 0) {
     item.amount--;
-    console.log(basket);
+    update(id);
   }
+};
+
+const update = (id) => {
+  const item = basket.find((product) => product.id === id);
+  document.getElementById(`quantity-${id}`).innerHTML = item.amount;
 };
