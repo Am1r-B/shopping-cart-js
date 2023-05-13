@@ -37,6 +37,7 @@ const generateShop = () => {
   return (shop.innerHTML = shopItemsData
     .map((item) => {
       const { id, name, price, desc, img } = item;
+      const amount = basket.find((cartItem) => cartItem.id === id)?.amount || 0;
       return `
       <div id="product-${id}" class="item">
         <img width="220" height="220" src=${img} alt="" />
@@ -47,7 +48,7 @@ const generateShop = () => {
             <h2>$ ${price}</h2>
             <div class="buttons">
               <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
-              <div id="quantity-${id}" class="quantity">0</div>
+              <div id="quantity-${id}" class="quantity">${amount}</div>
               <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
             </div>
           </div>
