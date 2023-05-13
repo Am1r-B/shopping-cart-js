@@ -72,3 +72,11 @@ body {
   gap: 8px;
   font-size: 16px;
 }
+
+.bi-dash-lg {
+  color: red;
+}
+
+.bi-plus-lg {
+  color: green;
+}
