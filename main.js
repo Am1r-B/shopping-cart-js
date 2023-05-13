@@ -31,7 +31,7 @@ const shopItemsData = [
   },
 ];
 
-const basket = [];
+const basket = JSON.parse(localStorage.getItem("shopping-cart")) || [];
 
 const generateShop = () => {
   return (shop.innerHTML = shopItemsData
@@ -60,36 +60,38 @@ const generateShop = () => {
 generateShop();
 
 const increment = (id) => {
-  const item = basket.find((product) => product.id === id);
+  const cartItem = basket.find((item) => item.id === id);
 
-  if (item) {
-    item.amount++;
+  if (cartItem) {
+    cartItem.amount++;
   } else {
     basket.push({
       id,
       amount: 1,
     });
   }
+  localStorage.setItem("shopping-cart", JSON.stringify(basket));
   update(id);
 };
 const decrement = (id) => {
-  const item = basket.find((product) => product.id === id);
+  const cartItem = basket.find((item) => item.id === id);
 
-  if (item?.amount > 0) {
-    item.amount--;
+  if (cartItem?.amount > 0) {
+    cartItem.amount--;
+    localStorage.setItem("shopping-cart", JSON.stringify(basket));
     update(id);
   }
 };
 
 const update = (id) => {
-  const item = basket.find((product) => product.id === id);
-  document.getElementById(`quantity-${id}`).innerHTML = item.amount;
+  const cartItem = basket.find((item) => item.id === id);
+  document.getElementById(`quantity-${id}`).innerHTML = cartItem.amount;
   calculation();
 };
 
 const calculation = () => {
   const cartIcon = document.getElementById("cart-amount");
-  cartIcon.innerHTML = basket.reduce((sum, product) => {
-    return sum + product.amount;
+  cartIcon.innerHTML = basket.reduce((sum, item) => {
+    return sum + item.amount;
   }, 0);
 };
