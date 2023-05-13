@@ -31,6 +31,8 @@ const shopItemsData = [
   },
 ];
 
+const basket = [];
+
 const generateShop = () => {
   return (shop.innerHTML = shopItemsData
     .map((item) => {
@@ -44,9 +46,9 @@ const generateShop = () => {
           <div class="price-quantity">
             <h2>$ ${price}</h2>
             <div class="buttons">
-              <i class="bi bi-dash-lg"></i>
+              <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
               <div id="quantity-${id}" class="quantity">0</div>
-              <i class="bi bi-plus-lg"></i>
+              <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
             </div>
           </div>
         </div>
@@ -56,3 +58,25 @@ const generateShop = () => {
 };
 
 generateShop();
+
+const increment = (id) => {
+  const item = basket.find((product) => product.id === id);
+
+  if (item) {
+    item.amount++;
+  } else {
+    basket.push({
+      id,
+      amount: 1,
+    });
+  }
+  console.log(basket);
+};
+const decrement = (id) => {
+  const item = basket.find((product) => product.id === id);
+
+  if (item?.amount > 0) {
+    item.amount--;
+    console.log(basket);
+  }
+};
