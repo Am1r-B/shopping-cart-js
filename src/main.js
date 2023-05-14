@@ -1,6 +1,6 @@
 const shop = document.getElementById("shop");
 
-const shopItemsData = [
+/* const shopItemsData = [
   {
     id: 1,
     name: "Casual Shirt",
@@ -29,7 +29,7 @@ const shopItemsData = [
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing.",
     img: "images/img-4.jpg",
   },
-];
+]; */
 
 let basket = JSON.parse(localStorage.getItem("shopping-cart")) || [];
 
