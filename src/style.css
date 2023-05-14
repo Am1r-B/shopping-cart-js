@@ -101,3 +101,10 @@ a {
 .bi-plus-lg {
   color: green;
 }
+
+/* Style rules for label and some buttons */
+
+.text-center {
+  text-align: center;
+  margin-bottom: 20px;
+}
