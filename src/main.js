@@ -61,7 +61,7 @@ const generateShop = () => {
 generateShop();
 
 const increment = (id) => {
-  const cartItem = basket.find((item) => item.id === id);
+  const cartItem = basket.find((cartItem) => cartItem.id === id);
 
   if (cartItem) {
     cartItem.amount++;
@@ -75,26 +75,26 @@ const increment = (id) => {
   localStorage.setItem("shopping-cart", JSON.stringify(basket));
 };
 const decrement = (id) => {
-  const cartItem = basket.find((item) => item.id === id);
+  const cartItem = basket.find((cartItem) => cartItem.id === id);
 
   if (cartItem?.amount > 0) {
     cartItem.amount--;
     update(id);
-    basket = basket.filter((item) => item.amount !== 0);
+    basket = basket.filter((cartItem) => cartItem.amount !== 0);
     localStorage.setItem("shopping-cart", JSON.stringify(basket));
   }
 };
 
 const update = (id) => {
-  const cartItem = basket.find((item) => item.id === id);
+  const cartItem = basket.find((cartItem) => cartItem.id === id);
   document.getElementById(`quantity-${id}`).innerHTML = cartItem.amount;
   calculation();
 };
 
 const calculation = () => {
   const cartIcon = document.getElementById("cart-amount");
-  cartIcon.innerHTML = basket.reduce((sum, item) => {
-    return sum + item.amount;
+  cartIcon.innerHTML = basket.reduce((sum, cartItem) => {
+    return sum + cartItem.amount;
   }, 0);
 };
 
