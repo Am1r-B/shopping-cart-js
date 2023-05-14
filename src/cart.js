@@ -16,11 +16,23 @@ const generateCartItems = () => {
   if (basket.length !== 0) {
     return (shoppingCart.innerHTML = basket
       .map(({ id, amount }) => {
-        const { name, img } =
+        const { name, price, img } =
           shopItemsData.find((item) => item.id === id) || [];
         return `
         <div class="cart-item">
           <img width="100" height="100" src="${img}" alt="" />
+          <div class="details">
+
+            <div class="title-price-x">
+              <h4>
+              </h4>
+              <i class="bi bi-x-lg"></i>
+            </div>
+
+            <div class="cart-buttons"></div>
+
+            <h3>$ </h3>
+          </div>
         </div>
       `;
       })

@@ -118,3 +118,8 @@ a {
   cursor: pointer;
   margin-top: 10px;
 }
+
+.bi-x-lg {
+  color: red;
+  font-weight: bold;
+}
