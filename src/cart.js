@@ -25,13 +25,15 @@ const generateCartItems = () => {
 
             <div class="title-price-x">
               <h4>
+                <span>${name}</span>
+                <span>$ ${price}</span>
               </h4>
               <i class="bi bi-x-lg"></i>
             </div>
 
             <div class="cart-buttons"></div>
 
-            <h3>$ </h3>
+            <h3>$ ${amount * price}</h3>
           </div>
         </div>
       `;

@@ -123,3 +123,19 @@ a {
   color: red;
   font-weight: bold;
 }
+
+/* Style rules for shopping-cart */
+
+.shopping-cart {
+  display: grid;
+  grid-template-columns: 320px;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Style rules for cart-item */
+
+.cart-item {
+  border: 2px solid #212529;
+  border-radius: 5px;
+}
