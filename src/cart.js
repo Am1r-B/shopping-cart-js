@@ -14,6 +14,17 @@ calculation();
 
 const generateCartItems = () => {
   if (basket.length !== 0) {
+    return (shoppingCart.innerHTML = basket
+      .map(({ id, amount }) => {
+        const { name, img } =
+          shopItemsData.find((item) => item.id === id) || [];
+        return `
+        <div class="cart-item">
+          <img width="100" height="100" src="${img}" alt="" />
+        </div>
+      `;
+      })
+      .join(""));
   } else {
     label.innerHTML = `
       <h2>Cart is Empty</h2>
