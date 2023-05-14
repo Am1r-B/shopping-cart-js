@@ -31,7 +31,7 @@ const shopItemsData = [
   },
 ];
 
-const basket = JSON.parse(localStorage.getItem("shopping-cart")) || [];
+let basket = JSON.parse(localStorage.getItem("shopping-cart")) || [];
 
 const generateShop = () => {
   return (shop.innerHTML = shopItemsData
@@ -71,16 +71,17 @@ const increment = (id) => {
       amount: 1,
     });
   }
-  localStorage.setItem("shopping-cart", JSON.stringify(basket));
   update(id);
+  localStorage.setItem("shopping-cart", JSON.stringify(basket));
 };
 const decrement = (id) => {
   const cartItem = basket.find((item) => item.id === id);
 
   if (cartItem?.amount > 0) {
     cartItem.amount--;
-    localStorage.setItem("shopping-cart", JSON.stringify(basket));
     update(id);
+    basket = basket.filter((item) => item.amount !== 0);
+    localStorage.setItem("shopping-cart", JSON.stringify(basket));
   }
 };
 
