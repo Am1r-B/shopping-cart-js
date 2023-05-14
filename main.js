@@ -97,3 +97,5 @@ const calculation = () => {
     return sum + item.amount;
   }, 0);
 };
+
+calculation();
