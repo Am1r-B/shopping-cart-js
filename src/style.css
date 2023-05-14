@@ -14,20 +14,24 @@ i {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 /* Navbar styles are here */
 
 .navbar {
   display: flex;
   justify-content: space-between;
   background-color: #212529;
-  color: white;
   padding: 25px 60px;
   margin-bottom: 30px;
 }
 
 .cart {
   position: relative;
-  background-color: #fff;
+  background-color: white;
   color: #212529;
   font-size: 30px;
   padding: 5px;
