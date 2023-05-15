@@ -82,3 +82,17 @@ const removeItem = (id) => {
   generateCartItems();
   localStorage.setItem("shopping-cart", JSON.stringify(basket));
 };
+
+const totalAmount = () => {
+  if (basket.length !== 0) {
+    let total = basket.reduce((sum, { id, amount }) => {
+      const { price } = shopItemsData.find((item) => item.id === id);
+      return sum + amount * price;
+    }, 0);
+    label.innerHTML = `
+      <h2>Total Bill: $ ${total}</h2>
+    `;
+  }
+};
+
+totalAmount();
