@@ -28,13 +28,13 @@ const generateCartItems = () => {
                 <span>${name}</span>
                 <span class="cart-item-price">$ ${price}</span>
               </h4>
-              <i class="bi bi-x-lg"></i>
+              <i onclick="removeItem(${id})" class="bi bi-x-lg"></i>
             </div>
 
             <div class="buttons">
-              <i class="bi bi-dash-lg"></i>
+              <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
               <div id="quantity-${id}" class="quantity">${amount}</div>
-              <i class="bi bi-plus-lg"></i>
+              <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
             </div>
 
             <h3>$ ${amount * price}</h3>
@@ -55,3 +55,30 @@ const generateCartItems = () => {
 };
 
 generateCartItems();
+
+const increment = (id) => {
+  const cartItem = basket.find((cartItem) => cartItem.id === id);
+
+  cartItem.amount++;
+
+  calculation();
+  generateCartItems();
+  localStorage.setItem("shopping-cart", JSON.stringify(basket));
+};
+const decrement = (id) => {
+  const cartItem = basket.find((cartItem) => cartItem.id === id);
+
+  cartItem.amount--;
+
+  basket = basket.filter((cartItem) => cartItem.amount !== 0);
+  calculation();
+  generateCartItems();
+  localStorage.setItem("shopping-cart", JSON.stringify(basket));
+};
+
+const removeItem = (id) => {
+  basket = basket.filter((cartItem) => cartItem.id !== id);
+  calculation();
+  generateCartItems();
+  localStorage.setItem("shopping-cart", JSON.stringify(basket));
+};
