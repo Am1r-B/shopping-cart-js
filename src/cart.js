@@ -55,9 +55,7 @@ const increment = (id) => {
 
   cartItem.amount++;
 
-  calculation();
-  generateCartItems();
-  localStorage.setItem("shopping-cart", JSON.stringify(basket));
+  update();
 };
 const decrement = (id) => {
   const cartItem = basket.find((cartItem) => cartItem.id === id);
@@ -65,16 +63,25 @@ const decrement = (id) => {
   cartItem.amount--;
 
   basket = basket.filter((cartItem) => cartItem.amount !== 0);
+
+  update();
+};
+
+const removeItem = (id) => {
+  basket = basket.filter((cartItem) => cartItem.id !== id);
+  update();
+};
+
+const update = () => {
+  totalAmount();
   calculation();
   generateCartItems();
   localStorage.setItem("shopping-cart", JSON.stringify(basket));
 };
 
-const removeItem = (id) => {
-  basket = basket.filter((cartItem) => cartItem.id !== id);
-  calculation();
-  generateCartItems();
-  localStorage.setItem("shopping-cart", JSON.stringify(basket));
+const clearCart = () => {
+  basket = [];
+  update();
 };
 
 const totalAmount = () => {
