@@ -20,18 +20,22 @@ const generateCartItems = () => {
           shopItemsData.find((item) => item.id === id) || [];
         return `
         <div class="cart-item">
-          <img width="100" height="100" src="${img}" alt="" />
+          <img width="110" height="110" src="${img}" alt="" />
           <div class="details">
 
             <div class="title-price-x">
-              <h4>
+              <h4 class="title-price">
                 <span>${name}</span>
-                <span>$ ${price}</span>
+                <span class="cart-item-price">$ ${price}</span>
               </h4>
               <i class="bi bi-x-lg"></i>
             </div>
 
-            <div class="cart-buttons"></div>
+            <div class="buttons">
+              <i class="bi bi-dash-lg"></i>
+              <div id="quantity-${id}" class="quantity">${amount}</div>
+              <i class="bi bi-plus-lg"></i>
+            </div>
 
             <h3>$ ${amount * price}</h3>
           </div>
